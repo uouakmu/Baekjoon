@@ -1,3 +1,5 @@
+@@@ C언어는 상당히 어려워서 보류 @@@
+
 # [Silver IV] 나는야 포켓몬 마스터 이다솜 - 1620 
 
 [문제 링크](https://www.acmicpc.net/problem/1620) 
