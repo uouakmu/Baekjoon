@@ -1,20 +1,19 @@
-n = int(input())
-dp = [0] * (n+1)
+def solve():
+    n = int(input())
+    sqr = n**0.5
 
-k = 1
-while k**2<=n:
-    dp[k**2] = 1
-    k+=1
+    if sqr.is_integer():
+        return 1
+        
+    for i in range(int(sqr), 0, -1):
+        if ((n - i**2)**0.5).is_integer():
+            return 2
 
-for i in range(1, n+1):
-    if dp[i] != 0:
-        continue
+    for i in range(int(sqr),0,-1):
+        for j in range(int((n-i**2)**0.5),0,-1):
+            if ((n - i**2 - j**2)**0.5).is_integer():
+                return 3
     
-    j = 1
-    while j*j <= i:
-        if dp[i] == 0:
-            dp[i] = dp[j*j] + dp[i-j*j]
-        else:
-            dp[i] = min(dp[i], dp[j*j] + dp[i-j*j])
-        j += 1
-print(dp[n])
+    return 4
+
+print(solve())
