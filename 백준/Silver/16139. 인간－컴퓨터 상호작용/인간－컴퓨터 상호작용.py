@@ -1,14 +1,15 @@
 import sys
 input = sys.stdin.readline
 
-s=input()
+s = input().rstrip()
+aph = [[0] * 26 for _ in range(len(s) + 1)]
+
+for i in range(len(s)):  
+    for j in range(26):
+        aph[i + 1][j] = aph[i][j]  
+    aph[i + 1][ord(s[i]) - 97] += 1  
+
 for _ in range(int(input())):
-    a = input().split()
-    count=0
-    for i in range(int(a[1]),int(a[2])+1):
-        # print("s[i]: %s, a[0]: %s"%(s[i],a[0]))
-        if s[i]==a[0]:
-            count +=1
-            
-    print(count)
-    
+    arr = input().split()
+    res = aph[int(arr[2]) + 1][ord(arr[0]) - 97] - aph[int(arr[1])][ord(arr[0]) - 97]
+    print(res)
